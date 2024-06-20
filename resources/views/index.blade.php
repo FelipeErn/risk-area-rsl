@@ -48,8 +48,8 @@
                     const popupContent = `
                         <h4>{{ $riskArea->name }}</h4>
                         <p>{{ $riskArea->description }}</p>
-                        <p><strong>Risk Type:</strong> {{ $riskArea->risk_type }}</p>
-                        <p><strong>Severity Level:</strong> {{ $riskArea->severity_level }}</p>
+                        <p><strong>Tipo de Risco:</strong> {{ $riskArea->risk_type }}</p>
+                        <p><strong>Nível de Severidade:</strong> {{ $riskArea->severity_level }}</p>
                     `;
                     
                     polygonLayer.bindPopup(popupContent);
