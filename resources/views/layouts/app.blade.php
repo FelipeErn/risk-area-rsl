@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="defesa-civil-logo.png" style="height: 65px; padding: 0 10px;"/>Controle de Riscos</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,32 @@
                         <a class="nav-link" href="{{ url('/alerts') }}">Alertas</a>
                     </li>
                 </ul>
+                @auth
+                    <div class="d-flex">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ auth()->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Sair</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                @else
+                    <a class="btn btn-outline-primary" href="{{ route('login') }}" style="color: white; border-color: white;">Entrar</a>
+                @endauth
             </div>
         </div>
     </nav>
     
-    <div class="container mt-4">
+    <div class="container mt-3">
         @yield('content')
     </div>
     

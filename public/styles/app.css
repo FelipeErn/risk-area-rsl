@@ -28,6 +28,7 @@ body {
     grid-template-columns: 1fr 2fr;
     gap: 20px;
     padding: 20px;
+    padding-top: 0;
 }
 
 .left-panel {
@@ -73,5 +74,13 @@ h3 {
 }
 
 .navbar {
-    border-bottom: 3px solid orange;
+    border-bottom: 4px solid orange;
+    background-color: #322f63;
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+}
+.nav-link:hover, .navbar-brand:hover {
+    color: #95a5a6;
 }
