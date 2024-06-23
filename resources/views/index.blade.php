@@ -6,7 +6,35 @@
 @endphp
 
 @section('content')
-    <div id="mapContainer" style="width: 100%; height: 600px;"></div>
+<div class="dashboard-container">
+    <div class="left-panel">
+        <div class="incidents">
+            <h3>Últimos Incidentes</h3>
+            <ul class="list-group">
+                @foreach ($incidents as $incident)
+                    <li class="list-group-item">
+                        <strong>{{ $incident->riskArea->name }}:</strong> {{ $incident->description }} <br>
+                        <small>{{ $incident->occurrence_date }}</small>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="alerts">
+            <h3>Últimos Alertas</h3>
+            <ul class="list-group">
+                @foreach ($alerts as $alert)
+                    <li class="list-group-item">
+                        <strong>{{ $alert->riskArea->name }}:</strong> {{ $alert->message }} <br>
+                        <small>De: {{ $alert->sent_at }} Até: {{ $alert->end_at }}</small>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    <div class="map-panel">
+        <div id="mapContainer" style="width: 100%; height: 100%;"></div>
+    </div>
+</div>
 
     <script>
         const getSeverityColor = (severity) => {

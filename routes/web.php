@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 use App\Http\Controllers\RiskAreaController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlertController;
+use App\Http\Controllers\DashboardController;
 
+Route::get('/', [DashboardController::class, 'index']);
 Route::resource('risk-areas', RiskAreaController::class);
 Route::resource('incidents', IncidentController::class);
 Route::resource('users', UserController::class);

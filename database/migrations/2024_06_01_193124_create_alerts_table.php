@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('alerts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('risk_area_id')->constrained('risk_areas');
-            $table->foreignId('user_id')->constrained('users');
             $table->text('message');
-            $table->enum('alert_type', ['SMS', 'email', 'push_notification']);
             $table->timestamp('sent_at');
+            $table->timestamp('end_at');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
